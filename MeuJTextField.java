@@ -33,7 +33,7 @@ public class MeuJTextField extends JFormattedTextField {
 
     private void atualizarCor() {
         if(Dados.listaNumerosSelecionados.contains(Util.removeZerosEsquerda(getText()))) {
-            setBackground(new Color(255, 135, 135));
+            setBackground(Constantes.COR_ACERTO);
         }
         else {
             setBackground(Color.WHITE);

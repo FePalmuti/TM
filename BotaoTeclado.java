@@ -10,11 +10,11 @@ public class BotaoTeclado extends JButton {
             @Override
             public void actionPerformed(ActionEvent e) {
                 if(getBackground() == Color.WHITE) {
-                    setBackground(new Color(255, 135, 135));
+                    setBackground(Constantes.COR_SELECAO);
                     Dados.listaNumerosSelecionados.add(getText());
                     for(MeuJTextField tf : Dados.todosJTF) {
                         if(Util.removeZerosEsquerda(tf.getText()).equals(getText())) {
-                            tf.setBackground(new Color(255, 135, 135));
+                            tf.setBackground(Constantes.COR_ACERTO);
                             tf.getJogoPai().atualizarSoma();
                         }
                     }
