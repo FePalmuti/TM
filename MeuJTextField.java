@@ -8,8 +8,7 @@ import java.text.ParseException;
 public class MeuJTextField extends JFormattedTextField {
     private Jogo jogoPai;
 
-    public MeuJTextField(Jogo j) throws ParseException {
-        super(new MaskFormatter("##"));
+    public MeuJTextField(Jogo j) {
         jogoPai = j;
         setPreferredSize(new Dimension(40, 20));
         getDocument().addDocumentListener(new DocumentListener() {

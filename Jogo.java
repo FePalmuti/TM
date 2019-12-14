@@ -10,14 +10,9 @@ public class Jogo extends JPanel {
     public Jogo() {
         setPreferredSize(new Dimension(770, 30));
         for(int i=0; i<15; i++) {
-            try {
-                MeuJTextField labelNumero = new MeuJTextField(this);
-                listaJTF.add(labelNumero);
-                add(labelNumero);
-            }
-            catch(ParseException e) {
-                System.out.println("Erro na mascara!");
-            }
+            MeuJTextField labelNumero = new MeuJTextField(this);
+            listaJTF.add(labelNumero);
+            add(labelNumero);
         }
         add(new JLabel(" --->"));
         labelSoma = new JLabel("0");
