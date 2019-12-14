@@ -13,7 +13,7 @@ public class BotaoTeclado extends JButton {
                     setBackground(new Color(255, 135, 135));
                     Dados.listaNumerosSelecionados.add(getText());
                     for(MeuJTextField tf : Dados.todosJTF) {
-                        if(tf.getText().equals(getText())) {
+                        if(Util.removeZerosEsquerda(tf.getText()).equals(getText())) {
                             tf.setBackground(new Color(255, 135, 135));
                             tf.getJogoPai().atualizarSoma();
                         }
@@ -23,7 +23,7 @@ public class BotaoTeclado extends JButton {
                     setBackground(Color.WHITE);
                     Dados.listaNumerosSelecionados.remove(getText());
                     for(MeuJTextField tf : Dados.todosJTF) {
-                        if(tf.getText().equals(getText())) {
+                        if(Util.removeZerosEsquerda(tf.getText()).equals(getText())) {
                             tf.setBackground(Color.WHITE);
                             tf.getJogoPai().atualizarSoma();
                         }
