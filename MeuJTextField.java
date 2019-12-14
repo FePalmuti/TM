@@ -2,11 +2,14 @@ import javax.swing.*;
 import java.awt.*;
 import javax.swing.event.*;
 import java.util.*;
+import javax.swing.text.MaskFormatter;
+import java.text.ParseException;
 
 public class MeuJTextField extends JFormattedTextField {
     private Jogo jogoPai;
 
-    public MeuJTextField(Jogo j) {
+    public MeuJTextField(Jogo j) throws ParseException {
+        super(new MaskFormatter("##"));
         jogoPai = j;
         setPreferredSize(new Dimension(40, 20));
         getDocument().addDocumentListener(new DocumentListener() {
