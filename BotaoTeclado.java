@@ -12,18 +12,20 @@ public class BotaoTeclado extends JButton {
                 if(getBackground() == Color.WHITE) {
                     setBackground(new Color(255, 135, 135));
                     Dados.listaNumerosSelecionados.add(getText());
-                    for(MeuJTextField tf : Dados.listaJTF) {
+                    for(MeuJTextField tf : Dados.todosJTF) {
                         if(tf.getText().equals(getText())) {
                             tf.setBackground(new Color(255, 135, 135));
+                            tf.getJogoPai().atualizarSoma();
                         }
                     }
                 }
                 else {
                     setBackground(Color.WHITE);
                     Dados.listaNumerosSelecionados.remove(getText());
-                    for(MeuJTextField tf : Dados.listaJTF) {
+                    for(MeuJTextField tf : Dados.todosJTF) {
                         if(tf.getText().equals(getText())) {
                             tf.setBackground(Color.WHITE);
+                            tf.getJogoPai().atualizarSoma();
                         }
                     }
                 }

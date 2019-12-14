@@ -4,23 +4,32 @@ import javax.swing.event.*;
 import java.util.*;
 
 public class MeuJTextField extends JFormattedTextField {
-    public MeuJTextField() {
+    private Jogo jogoPai;
+
+    public MeuJTextField(Jogo j) {
+        jogoPai = j;
         setPreferredSize(new Dimension(40, 20));
         getDocument().addDocumentListener(new DocumentListener() {
             public void changedUpdate(DocumentEvent e) {
                 //---
             }
             public void removeUpdate(DocumentEvent e) {
-                verificarConteudo();
+                atualizarCor();
+                jogoPai.atualizarSoma();
             }
             public void insertUpdate(DocumentEvent e) {
-                verificarConteudo();
+                atualizarCor();
+                jogoPai.atualizarSoma();
             }
         });
-        Dados.listaJTF.add(this);
+        Dados.todosJTF.add(this);
     }
 
-    private void verificarConteudo() {
+    public Jogo getJogoPai() {
+        return jogoPai;
+    }
+
+    private void atualizarCor() {
         if(Dados.listaNumerosSelecionados.contains(getText())) {
             setBackground(new Color(255, 135, 135));
         }

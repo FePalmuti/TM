@@ -1,6 +1,8 @@
 import java.util.*;
 
 public class Dados {
+    // Teclado virtual
     public static ArrayList<String> listaNumerosSelecionados = new ArrayList<>();
-    public static ArrayList<MeuJTextField> listaJTF = new ArrayList<>();
+    // Jogos
+    public static ArrayList<MeuJTextField> todosJTF = new ArrayList<>();
 }
