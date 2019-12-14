@@ -1,6 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
+import java.text.ParseException;
 
 public class Jogo extends JPanel {
     private ArrayList<MeuJTextField> listaJTF = new ArrayList<>();
@@ -9,9 +10,14 @@ public class Jogo extends JPanel {
     public Jogo() {
         setPreferredSize(new Dimension(770, 30));
         for(int i=0; i<15; i++) {
-            MeuJTextField labelNumero = new MeuJTextField(this);
-            listaJTF.add(labelNumero);
-            add(labelNumero);
+            try {
+                MeuJTextField labelNumero = new MeuJTextField(this);
+                listaJTF.add(labelNumero);
+                add(labelNumero);
+            }
+            catch(ParseException e) {
+                System.out.println("Erro na mascara!");
+            }
         }
         add(new JLabel(" --->"));
         labelSoma = new JLabel("0");

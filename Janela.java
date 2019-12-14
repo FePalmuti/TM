@@ -6,11 +6,11 @@ public class Janela extends JFrame {
         configurar();
         setLayout(new GridLayout(2, 1));
         //---
-        JPanel painelSuperior = new JPanel();
+        JPanel painelSuperior = new JPanel(new GridBagLayout());
         add(painelSuperior);
         painelSuperior.add(new TecladoVirtual());
         //---
-        JPanel painelInferior = new JPanel();
+        JPanel painelInferior = new JPanel(new GridBagLayout());
         add(painelInferior);
         painelInferior.add(new PainelJogos());
     }
