@@ -12,7 +12,9 @@ public class Janela extends JFrame {
         //---
         JPanel painelInferior = new JPanel(new GridBagLayout());
         add(painelInferior);
-        painelInferior.add(new PainelJogos());
+        JScrollPane scroll = new JScrollPane(new PainelJogos());
+        scroll.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        painelInferior.add(scroll);
     }
 
     private void configurar() {
