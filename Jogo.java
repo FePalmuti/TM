@@ -1,28 +1,41 @@
 import javax.swing.*;
 import java.awt.*;
 import java.util.*;
-import java.text.ParseException;
+import java.awt.event.*;
 
 public class Jogo extends JPanel {
     private ArrayList<MeuJTextField> listaJTF = new ArrayList<>();
     private JLabel labelSoma;
+    private PainelJogos painelPai;
 
-    public Jogo() {
-        setPreferredSize(new Dimension(770, 30));
+    public Jogo(PainelJogos pj) {
+        Jogo self = this;
+        painelPai = pj;
+        setPreferredSize(new Dimension(770, 40));
         for(int i=0; i<15; i++) {
             MeuJTextField labelNumero = new MeuJTextField(this);
             listaJTF.add(labelNumero);
             add(labelNumero);
         }
+        //---
         add(new JLabel(" --->"));
         labelSoma = new JLabel("0");
         add(labelSoma);
+        //---
+        JButton botaoExcluir = new JButton("x");
+        botaoExcluir.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                painelPai.excluirJogo(self);
+            }
+        });
+        add(botaoExcluir);
     }
 
     public void atualizarSoma() {
         int soma = 0;
         for(MeuJTextField mtf : listaJTF) {
-            if(mtf.getBackground().equals(new Color(255, 135, 135))) {
+            if(mtf.getBackground().equals(Constantes.COR_ACERTO)) {
                 soma += 1;
             }
         }

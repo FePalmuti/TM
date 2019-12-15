@@ -8,24 +8,33 @@ public class PainelJogos extends JPanel {
     private JButton botaoAdicionar;
 
     public PainelJogos() {
-        setPreferredSize(new Dimension(820, 270));
+        PainelJogos self = this;
+        setLayout(new WrapLayout());
         setBackground(Constantes.COR_CONTAINER);
         botaoAdicionar = new JButton("ADICIONAR");
         botaoAdicionar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                removeAll();
-                for(Jogo j : listaJogos) {
-                    add(j);
-                }
-                Jogo novoJogo = new Jogo();
+                Jogo novoJogo = new Jogo(self);
                 listaJogos.add(novoJogo);
-                add(novoJogo);
-                add(botaoAdicionar);
-                revalidate();
-                repaint();
+                atualizar();
             }
         });
         add(botaoAdicionar);
+    }
+
+    public void atualizar() {
+        removeAll();
+        for(Jogo j : listaJogos) {
+            add(j);
+        }
+        add(botaoAdicionar);
+        revalidate();
+        repaint();
+    }
+
+    public void excluirJogo(Jogo j) {
+        listaJogos.remove(j);
+        atualizar();
     }
 }
