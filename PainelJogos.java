@@ -9,18 +9,27 @@ public class PainelJogos extends JPanel {
 
     public PainelJogos() {
         PainelJogos self = this;
+        // Leitura de dados persistentes
+        //---
+        ArrayList<String[]> listaVetoresNumeros = Persistencia.lerDados();
+        //---
         setLayout(new WrapLayout());
         setBackground(Constantes.COR_CONTAINER);
         botaoAdicionar = new JButton("ADICIONAR");
         botaoAdicionar.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Jogo novoJogo = new Jogo(self);
+                Jogo novoJogo = new Jogo(self, null);
                 listaJogos.add(novoJogo);
                 atualizar();
             }
         });
-        add(botaoAdicionar);
+        //---
+        for(String[] vetorNumeros : listaVetoresNumeros) {
+            Jogo novoJogo = new Jogo(this, vetorNumeros);
+            listaJogos.add(novoJogo);
+            atualizar();
+        }
     }
 
     public void atualizar() {

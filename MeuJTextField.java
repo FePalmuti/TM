@@ -6,7 +6,8 @@ import java.util.*;
 public class MeuJTextField extends JFormattedTextField {
     private Jogo jogoPai;
 
-    public MeuJTextField(Jogo j) {
+    public MeuJTextField(Jogo j, String numero) {
+        super(numero);
         jogoPai = j;
         setPreferredSize(new Dimension(40, 20));
         getDocument().addDocumentListener(new DocumentListener() {

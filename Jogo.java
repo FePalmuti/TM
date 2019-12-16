@@ -8,14 +8,23 @@ public class Jogo extends JPanel {
     private JLabel labelSoma;
     private PainelJogos painelPai;
 
-    public Jogo(PainelJogos pj) {
+    public Jogo(PainelJogos pj, String[] vetorNumeros) {
         Jogo self = this;
         painelPai = pj;
         setPreferredSize(new Dimension(770, 40));
-        for(int i=0; i<15; i++) {
-            MeuJTextField labelNumero = new MeuJTextField(this);
-            listaJTF.add(labelNumero);
-            add(labelNumero);
+        if(vetorNumeros != null) {
+            for(int i=0; i<15; i++) {
+                MeuJTextField campoNumero = new MeuJTextField(this, vetorNumeros[i]);
+                listaJTF.add(campoNumero);
+                add(campoNumero);
+            }
+        }
+        else {
+            for(int i=0; i<15; i++) {
+                MeuJTextField campoNumero = new MeuJTextField(this, "");
+                listaJTF.add(campoNumero);
+                add(campoNumero);
+            }
         }
         //---
         add(new JLabel(" --->"));
