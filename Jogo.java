@@ -29,6 +29,7 @@ public class Jogo extends JPanel {
         //---
         add(new JLabel(" --->"));
         labelSoma = new JLabel("0");
+        labelSoma.setPreferredSize(new Dimension(30, 30));
         add(labelSoma);
         //---
         JButton botaoExcluir = new JButton("x");
