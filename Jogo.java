@@ -8,19 +8,31 @@ public class Jogo extends JPanel {
     private JLabel labelSoma;
     private PainelJogos painelPai;
 
-    public Jogo(PainelJogos pj) {
+    public Jogo(PainelJogos pj, String[] numeros) {
         Jogo self = this;
         painelPai = pj;
-        setPreferredSize(new Dimension(770, 40));
-        for(int i=0; i<15; i++) {
-            MeuJTextField labelNumero = new MeuJTextField(this);
-            listaJTF.add(labelNumero);
-            add(labelNumero);
+        setPreferredSize(new Dimension(800, 40));
+        //---
+        if(numeros != null) {
+            for(int i=0; i<15; i++) {
+                MeuJTextField campoNumero = new MeuJTextField(this);
+                listaJTF.add(campoNumero);
+                add(campoNumero);
+//                campoNumero.setText(numeros[i]);
+            }
+        }
+        else {
+            for(int i=0; i<15; i++) {
+                MeuJTextField campoNumero = new MeuJTextField(this);
+                listaJTF.add(campoNumero);
+                add(campoNumero);
+            }
         }
         //---
         add(new JLabel(" --->"));
         labelSoma = new JLabel("0");
         add(labelSoma);
+        add(new JLabel("   "));
         //---
         JButton botaoExcluir = new JButton("x");
         botaoExcluir.addActionListener(new ActionListener() {
