@@ -14,6 +14,7 @@ public class Persistencia {
                 listaVetoresNumeros.add(vetorNumeros);
                 linha = leitor.readLine();
             }
+            leitor.close();
         }
         catch(IOException e) {
             System.out.println("Erro na leitura!");
@@ -21,8 +22,26 @@ public class Persistencia {
         return listaVetoresNumeros;
     }
 
-    public static String[] interpretar(String linha) {
+    private static String[] interpretar(String linha) {
         String[] numeros = linha.split(", ");
         return numeros;
+    }
+
+    public static void salvarDados(ArrayList<String[]> listaVetoresNumeros) {
+        try {
+            PrintWriter escritor = new PrintWriter(new FileWriter(caminho));
+            for(String[] vetorNumeros : listaVetoresNumeros) {
+                String linha = "";
+                for(int i=0; i<vetorNumeros.length-1; i++) {
+                    linha += vetorNumeros[i]+", ";
+                }
+                linha += vetorNumeros[vetorNumeros.length-1];
+                escritor.println(linha);
+            }
+            escritor.close();
+        }
+        catch(IOException e) {
+            System.out.println("Erro na leitura!");
+        }
     }
 }

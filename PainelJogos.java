@@ -28,8 +28,8 @@ public class PainelJogos extends JPanel {
         for(String[] vetorNumeros : listaVetoresNumeros) {
             Jogo novoJogo = new Jogo(this, vetorNumeros);
             listaJogos.add(novoJogo);
-            atualizar();
         }
+        atualizar();
     }
 
     public void atualizar() {
@@ -43,6 +43,7 @@ public class PainelJogos extends JPanel {
     }
 
     public void excluirJogo(Jogo j) {
+        j.removerCamposListaGlobal();
         listaJogos.remove(j);
         atualizar();
     }

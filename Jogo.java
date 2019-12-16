@@ -11,7 +11,7 @@ public class Jogo extends JPanel {
     public Jogo(PainelJogos pj, String[] vetorNumeros) {
         Jogo self = this;
         painelPai = pj;
-        setPreferredSize(new Dimension(770, 40));
+        setPreferredSize(new Dimension(800, 40));
         if(vetorNumeros != null) {
             for(int i=0; i<15; i++) {
                 MeuJTextField campoNumero = new MeuJTextField(this, vetorNumeros[i]);
@@ -49,5 +49,11 @@ public class Jogo extends JPanel {
             }
         }
         labelSoma.setText(Integer.toString(soma));
+    }
+
+    public void removerCamposListaGlobal() {
+        for(MeuJTextField campo : listaJTF) {
+            Dados.todosJTF.remove(campo);
+        }
     }
 }
